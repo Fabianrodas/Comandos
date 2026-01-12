@@ -12,3 +12,12 @@ Comandos C:
 
 gcc nombredelarchivo.c							- Crea un ejecutable del archivo .c
 gcc nombredelarchivo.c -o nombreexe					- Crea el ejecutable con nombre personalizado
+
+
+Angular:
+
+
+ng serve -o
+ng g c [nombre] [opciones]
+ng g interface [nombre]
+ng g service [nombre]

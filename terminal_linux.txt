@@ -15,6 +15,7 @@ more nombredelarchivo							- Permite ver el contenido de un archivo en ambiente
 
 Más comandos:
 
+sudo shutdown now
 pwd									- Imprime el directorio actual (Print Working Directory)
 cat archivo								- Imprime todo el contenido del archivo
 echo texto > archivo							- Reescribe todo el archivo con el texto especificado
