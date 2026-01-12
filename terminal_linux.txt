@@ -1,0 +1,28 @@
+Terminal Linux:
+
+
+Terminal Básica:
+
+ls 									- Ver que hay dentro de una carpeta
+cd 									- Dirigirse a una carpeta
+cd.. 									- Salirse de la carpeta
+mkdir 									- Crear una carpeta
+code . 									- Abrir la carpeta en Visual Studio Code
+clear									- Limpiar la consola
+touch									- Crear un archivo (fichero)
+more nombredelarchivo							- Permite ver el contenido de un archivo en ambiente de Linux
+
+
+Más comandos:
+
+pwd									- Imprime el directorio actual (Print Working Directory)
+cat archivo								- Imprime todo el contenido del archivo
+echo texto > archivo							- Reescribe todo el archivo con el texto especificado
+nano archivo								- Editor de texto adentro de la terminal para el archivo (no existe en Windows)
+python3 archivo.py							- Ejecutar .py desde terminal
+mv archivo destino							- Mueve archivo de la carpeta actual a la carpeta destino (mv: move)
+cp archivo1 archivo2							- Clona archivo1 y le da de nombre archivo2 (cp: copy)
+cp archivo1 /directorio/entero/archivo2					- Clona archivo1, le da de nombre archivo2 y lo guarda en el directorio especificado
+sudo su									- Entra al root (todo lo que se escriba será con privilegios del sudo)
+
+Disclaimer: Si se crea un archivo y se lo escribe (con nano como sea en la terminal) con sudo, solo se podrá volver a editar en el futuro usando sudo, ahora es archivo solo tiene permiso para sudo y no dejará editarlo sin él.

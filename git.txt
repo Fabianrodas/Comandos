@@ -1,0 +1,77 @@
+Comandos Git:
+
+
+winget install git-flow							- Instalar GitFlow en la terminal Windows, brew en vez de winget para MacOS
+rm -rf .git (para bash)							- Quitar git de un proyecto.
+Remove-Item -Recurse -Force .git					- Lo mismo pero para powershell.
+
+
+Gif Config:
+
+(.gitconfig) 								- Carpeta en el disco para revisar los archivos de configuración
+git config --global user.name "Fabián Rodas"				- Realizar una configuración par git a nivel global (usuario)
+git config --global user.email "fabianrodas2005@gmail.com"		- Realizar una configuración par git a nivel global (correo)
+git config --global alias.nombredelalias "Comando"			- Ponerle un alias a un comando como git config --global alias.simplelog "log --graph --decorate --all --oneline"
+
+Git Local:
+
+git init								- Inicializar un repositorio desde la raíz de un proyecto
+git branch -m nombre							- Cambiar el nombre de la rama (como de master a main)
+git status								- Información de commits y adds en la rama, si hay cambios sin guardar te sale
+git add									- Añade una modificación del working al staging directory
+git commit -m "mensaje"							- Subir el snapshot que se guardo al repositorio
+git log									- Historial de commits con información del usuario
+git log --graph --decorate --all --oneline				- Log pero de manera simplificada, un commit por linea
+(.gitignore) /**fichero							- Dentro del .gitignore para ignorar un archivo (para comprobar usar git status)
+git reset								- Restaura todo el proyecto al ultimo commit
+git reset archivo							- Restaura un archivo al ultimo commit
+git diff								- Muestra cambios entre el ultimo commit y cambios actuales de mi proyecto
+git diff nombredelarama							- Muestra si hay cambios entre ramas
+git reset --hard hashdelcommit						- Restaura el proyecto a un commit especifico, escondiendo los demás, se puede hacer con los escondidos
+git reflog								- Historial completo de interacciones con commits, ya sean borrados o no
+git tag nombredeltag							- Darle un nombre significativo a un punto/commit, si solo se pone git tag da listado de tags que hay
+git branch nombredelarama						- Crear una nueva rama
+git branch								- Listado de ramas
+git switch nombredelarama						- Cambiar de una rama a otra
+git merge nombredelarama						- Fusionar cambios de una rama a la actual (puede existir conflicto),  darle :q en ventana de advertencia
+git stash								- Crea un commit local temporal que no afecta al arbol
+git stash list								- Lista los commits locales temporales creados
+git stash pop								- Trae los commits locales temporales para que puedas trabajar sobre ellos
+git stash drop								- Borra de la lista de stash
+git branch -d nombredelarama						- Borrar una rama
+
+Git Checkout (también dentro de Local):
+
+git checkout archivo							- Restaura con el ultimo commit cambios sin guardar de un archivo
+git checkout hashdelcommit						- Te desplaza a un commit especifico, no borra otros commits, usar simplelog para tener hashes pequeños
+git checkout tags/nombredeltag						- Otra manera de desplazamiento pero hacia un tag, sin hash
+git checkout main/master						- Para desplazarse otra vez al main
+
+Git Remoto:
+
+git remote add origin linkderepo.git					- Agrega un proyecto local a un repositorio de GitHub
+git push -u origin main							- Hacer push al main de mi proyecto, subir todo al remoto
+git fetch								- Descarga los cambios del remoto al local sin realizar cambios en el código
+git config pull.rebase false						- Configuramos para que cada vez que se vaya a hacer un pull se mergeen los cambios con el actual
+git pull origin main							- Trae los cambios a la version local combinando los dos
+git clone linkSSH							- Clona del remoto a uno local, el ssh puede ser como git@github.com:Fabianrodas/practica-git.git
+(GitHub) fork								- Permite crear una copia de un repositorio en GitHub donde puedo tener acceso ilimitado sin afectar el original
+(GitHub) pull request							- Si hago un commit extra en el repositorio que le hice fork, y ese código quiero ponerlo en el repositorio original 									  al que le hice fork, puedo solicitarle al creador del original, poner ese código/commit extra mediante un pull 									  request. Donde dice contribute.
+Git Flow:
+
+git flow								- Lista de comandos para GitFlow
+git flow init								- Empezar a trabajar con GitFlow en un repositorio
+git flow feature start nombredelfeat					- Crea una nueva feature en GitFlow
+git flow feature finish nombredelfeat					- Terminar la rama de una feature y lo mergea con develop
+git flow release start 1.0						- Empezar una version del repositorio
+git flow release finish 1.0						- Terminar una version del repositorio
+
+
+Git Cherry Pick y Rebase:
+
+git cherry-pick	hashdelcommit						- Trae un commit de cualquier rama, a laa rama en la que se esta trabajando
+git cherry-pick --continue						- Para realizarlo de manera iterativa
+git cherry-pick --abort							- Se cancela todo y se vuelve al estado de antes de empezar el cherry pick
+git rebase nombredelarama						- Trae un rama a un punto concreto (modifica el historial de los commits)
+git rebase --continue							- Para realizarlo de manera iterativa
+git rebase --abort							- Se cancela todo y se vuelve al estado de antes de empezar el rebase

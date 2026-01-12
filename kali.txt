@@ -1,0 +1,35 @@
+Comandos Kali y otros:
+
+
+Conexión:
+
+sudo ifconfig								- Devuelve la información de IPs y MAC (ipconfig en Windows)
+ping pagina.com -c 4							- Comprueba conexión con página, -c es count y 4 es el parámetro para las veces que se comprueba
+nslookup pagina.com							- Devuelve la dirección IP de la página (IPv4 e IPv6)
+whois pagina.com							- Devuelve información como DNS, IP, Address y mucho más (Kali)
+
+
+WhatWeb (Kali):
+
+whatweb --help								- Ver opciones generales para WhatWeb (herramienta de escaneo | páginas web)
+whatweb pagina.com -v							- Agresión nivel 1 (Stealthy) separada por plugins (verbose)
+whatweb x.x.x.x-x.x.x.x							- Usar whatweb en un rango de IP, por ejemplo en mi red local sería 192.168.100.1-192.168.100.255
+whatweb pagina.com --aggression n					- Agresión nivel n (3 Heavy, 4 Agressive).
+whatweb pagina.com --no-errors						- No muestra los errores que se dan si no encuentra algo hosteado
+whatweb pagina.com PARAMS --log-verbose=FILE				- Ejecuta el whatweb con sus parámetros (PARAMS) y al final guarda el archivo (verbose) llamado FILE					
+
+Harvester (Kali):
+
+Disclaimer: A veces esta herramienta no funciona del todo bien, se recomienda usar distinto parámetros de source, intentar varias veces y en distintos días para resultados más completos.
+Como alternativa a esta herramienta está la siguiente página web: 	https://hunter.io/
+Y también mejor incluso probar herramientas de Information Gathering en GitHub. (muy recomendado)
+
+theHarvester --help							- Ver opciones generales para Harvester (herramienta de escaneo para emails y usernames)
+theHarvester -d pagina.com -b all					- Escanear dominio (-d) y que te de todos los sources (mails) (-b all) (limite default de 500)
+theHarvester PARAMS -l n						- Poner parametros (PARAMS) y despues un limite especifico (n)
+
+Sherlock (Kali-GitHub):
+
+sherlock --help								- Ver opciones generales para Sherlock (herramienta de escaneo de nombres de usuario)
+sherlock username							- Revisa los sitios en donde ese username está vigente
+

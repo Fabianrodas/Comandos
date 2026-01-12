@@ -1,0 +1,14 @@
+Comandos Terminal:
+
+
+./nombre.exe								- Ejecuta un ejecutable
+Measure-Command { ./nombre.exe }					- Da tiempo de ejecución de un ejecutable {py nombre.py} u otro lenguaje si se quiere ejecutar un archivo
+
+rmdir public/storage
+
+
+Comandos C:
+
+
+gcc nombredelarchivo.c							- Crea un ejecutable del archivo .c
+gcc nombredelarchivo.c -o nombreexe					- Crea el ejecutable con nombre personalizado
