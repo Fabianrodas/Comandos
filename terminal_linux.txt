@@ -26,3 +26,6 @@ cp archivo1 /directorio/entero/archivo2					- Clona archivo1, le da de nombre ar
 sudo su									- Entra al root (todo lo que se escriba será con privilegios del sudo)
 
 Disclaimer: Si se crea un archivo y se lo escribe (con nano como sea en la terminal) con sudo, solo se podrá volver a editar en el futuro usando sudo, ahora es archivo solo tiene permiso para sudo y no dejará editarlo sin él.
+
+tree /									- Muestra todos los directorios del sistema en formal de arbol desde root (/)
+tree -L 1 /								- Muestra solo el primer nivel (-L (level), 1) desde root (/)

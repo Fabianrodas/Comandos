@@ -1,0 +1,36 @@
+Directorios Linux:
+
+
+/bin		- /bin (binary) es donde se encuentran los binarios, donde están guardadas las apps y programas que puedo ejecutar.
+
+/boot		- /boot tiene toda la información de booteo de Linux, jamás tocarla o se daña todo. Equivalente al System32 de Windows.
+
+/dev		- /dev (devices) contiene archivos de dispositivos, que se van generando al iniciar o cuando conecto algo como un USB.
+
+/etc		- /etc (Everything to configure) es donde se encuentran todos los archivos de configuración como el nombre del sistema, usuarios y contraseñas, particiones del 		 	  disco y entre muchas otras cosas.
+
+/home		- /home es donde están los directorios personales de usuarios como /home/fabian (mis cosas). Es como Users en Windows.
+
+/lib		- /lib (libraries) es donde estan todas las librerías que usa el sistema, especialmente los Kernel Modules (drivers) que permiten el funcionamiento de casi todo.
+
+/media		- /media es donde el almacenamiento externo aparece, como USBs, SDs o SSDs.
+
+/mnt		- /mnt (mount) era donde se montaban particiones o almacenamiento externo pero ya no se usa mucho hoy en día.
+
+/opt		- /opt es donde mi codigo propio que compilo termina usualmente, apps terminan en /opt/bin y librerías en /opt/lib. A veces terminan en /usr/local todo depende de como mi 		  codigo compila e instala cosas para saber a cual va.
+
+/proc		- /proc es como /dev pero contiene info de mi sistema como CPU o kernel (como lo que tira el neofetch), y va generando al iniciar o en el transcurso.
+
+/root		- /root es el home del superuser. No se debe tocar, es un usuario aparte, mejor mantener todo en los usuarios comunes. (solo se puede entrar como root)
+
+/usr		- /usr (Unix System Resources) contiene la mayoría del software del sistema: programas, librerías y recursos compartidos que no son críticos para el arranque.
+		  Hoy en día casi todos los binarios reales viven acá y en sistemas como Arch solo usan /usr y no /bin mientras que Debian y Ubuntu mantienen ambos haciendo que 
+		  /bin guarde los programas que vienen pre-instalados y /usr los programas que los usuarios instalan y corren.
+
+/srv		- /srv (server) contiene datos para servidores, si corro un servidor web en Linux ahi estarían mi HTML en /srv/http.
+
+/sys		- /sys (system) tambien como /proc y /dev, y puede hacer cosas como cambiar el brillo de mi pantalla modificando mis devices, pero es peligroso asi que mejor no tocar.
+
+/tmp		- /tmp (temporary) contiene datos temporales de apps y programas, aqui tambien puedo guardar mis datos temporales y no necesito superuser para usarlo.
+
+/var		- /var (variable) contiene logs de mi sistema (fallos, firewall, etc). Tiene 'spools' que son para tareas, como lista de espera esperando a que otra termine para empezar.
