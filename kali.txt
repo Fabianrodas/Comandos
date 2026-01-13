@@ -48,6 +48,7 @@ sudo nmap -sF target							- FIN Scan (ruido muy bajo)
 
 Disclaimer: Si los SYN scans están bloqueados por el firewall, el FIN Scan en vez de mandar una flag tipo SYN manda una tipo FIN (Finish). Si el puerto esta abierto no recibe respuesta pues es un fin de conexión pero si esta cerrado va a recibir respuesta RST (Resetear conexión). Mejor y mas viable es el SYN Scan pero no se debe descartar el FIN.
 
+
 Nmap port scanning:
 
 nmap -p 80 target							- Escanea solamente un puerto en este caso el puerto 80
@@ -69,6 +70,16 @@ sudo nmap -D RND:5 PARAMS target					- Crea 5 IPs randoms para esconder la mía 
 sudo nmap -D 192.168.1.4,192.168.1.54,192.168.1.32,ME target		- Especifico todas las IPs locales que quiera y al final me incluyo (ME) (ideal para dentro de mi red)
 sudo nmap -S x.x.x.x -Pn -e eth0					- Mandar un paquete desde la IP especificada, -Pn asume que el target esta online, -e es el network interface que se 									  puede ver con el ifconfig. Este comando no devuelve respuesta, solo el target puede verlo.
 sudo nmap -S x.x.x.x -Pn -e eth0 -g PORT_NUMBER				- Lo mismo que el anterior pero se puede enviar a un puerto especifico (para bypass al firewall si ellos admiten 									  paquetes en un puerto especifico y nosotros tenemos ese puerto)
+
+Nmap timing options:
+
+nmap PARAMS -T0 target							- Es el escaneo más lento, también conocido como escaneo "Paranoico". Esta opción es útil para evadir IDS.
+nmap PARAMS -T1 target							- Es una opción más rápida que T0, pero se le sigue llamando la plantilla "Sigilosa". Esta opción de 											  sincronización también es una buena opción para evadir el IDS.
+nmap PARAMS -T2 target							- Permite un escaneo oportuno y también se conoce como opción de sincronización "Cortés". Esta opción ralentiza el 									  escaneo, lo que resulta en un menor uso del ancho de banda y menos recursos del equipo de destino.	
+nmap PARAMS -T3 target							- Es el valor default de todos los escaneos, da mismo usarla o no.
+nmap PARAMS -T4 target							- Es una opción para acelerar los análisis, suponiendo que se está conectado a una red razonablemente rápida y 										  confiable. Esta plantilla de tiempo también se conoce como plantilla "Agresiva".
+nmap PARAMS -T5 target							- Es un modo increíblemente rápido, siempre que estés conectado a una red extremadamente rápida o si estás dispuesto 									  a sacrificar algo de precisión por velocidad. Por eso también se le conoce como el modo "Insane".
+
 
 Guardar Resultados Nmap:
 
