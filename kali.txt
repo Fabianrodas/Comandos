@@ -6,7 +6,55 @@ Conexión:
 sudo ifconfig								- Devuelve la información de IPs y MAC (ipconfig en Windows)
 ping pagina.com -c 4							- Comprueba conexión con página, -c es count y 4 es el parámetro para las veces que se comprueba
 nslookup pagina.com							- Devuelve la dirección IP de la página (IPv4 e IPv6)
+netstat -nr								- Devuelve información de mi router
 whois pagina.com							- Devuelve información como DNS, IP, Address y mucho más (Kali)
+
+
+Nmap (Kali):
+
+"Si un escaneo tarda, para ver su porcentaje presionar flecha arriba."
+
+
+Nmap targeting:
+
+man nmap								- Manual de Nmap (todas las opciones explicadas en buen detalle)
+nmap --help 								- Ver opciones generales para Nmap (herramienta de escaneo de redes)
+nmap x.x.x.x								- Devuelve puertos abiertos de la IP/pagina que se de. (Puede tardar mucho o nada)
+nmp x.x.x.x-x | nmap x.x.x.x/x						- Escanear rango de IPs de dos maneras: -255 o /24
+
+
+Nmap scan types:
+
+sudo nmap -sS target							- TCP SYN Scan (ruido muy bajo)
+
+Disclaimer: Es de los escaneos más rápidos porque nunca establece una conexión TCP completa. Lo que hace es ejecutar el paso 1 (synchronize) del three way handshake de TCP: SYN (cliente) -> SYN-ACK (servidor) -> ACK (cliente). Solo el root (sudo) puede hacer esto porque no realiza la conexión completa como el normal.
+
+nmap -sT target								- TCP Three way handshake normal (ruido medio)
+
+Disclaimer: Es una conexión TCP completa (es un poco menos rápida que la SYN Scan) y no necesita permisos de root porque si la realiza de manera normal. Este escaneo dejará más rastro en mi objetivo que el -sS.
+
+nmap -sU target								- UDP Scan (ruido medio)
+
+Disclaimer: Este escaneo se va a tardar mucho más que cualquiera de TCP, pero nunca se debe ignorar las vulnerabilidades que pueden existir en puerto UDPs que no son tan usados en web como los puertos TCPs.
+
+sudo nmap -O target							- Descubrir OS del target (se necesita 1 puerto abierto y 1 cerrado para resultados exactos) (ruido medio)
+sudo nmap -sV target							- Service Version Scan, da las versiones de los servicios en los puertos abiertos (ruido medio)
+sudo nmap -A target							- Aggressive Option, escaneo completo del target y usa todas las opciones anteriores (ruido muy alto)
+nmap -sn targets							- No ports, ver solo que hosts están arriba en una red (-255, /24) (ruido muy bajo)
+
+
+Nmap port scanning:
+
+nmap -p 80 target							- Escanea solamente un puerto en este caso el puerto 80
+nmap -p 80,100,5000 target						- Escanea solamente los puertos mencionados
+nmap -p 0-65535 target							- Escanea solamente dentro del rango de puertos mencionado, para ver todos sin limite ir al 65535
+nmap -F target								- Escanea el top 100 puertos más usados
+
+
+Guardar Resultados Nmap:
+
+nmap PARAMS target >> file.txt						- Guardar resultado en archivo .txt
+nmap -oN file.txt PARAMS target						- Guardar resultado en archivo .txt y también mostrar resultado en terminal
 
 
 WhatWeb (Kali):
@@ -32,4 +80,10 @@ Sherlock (Kali-GitHub):
 
 sherlock --help								- Ver opciones generales para Sherlock (herramienta de escaneo de nombres de usuario)
 sherlock username							- Revisa los sitios en donde ese username está vigente
+
+NetDiscover (Kali):
+
+sudo netdiscover --help							- Ver opciones generales para NetDiscover (herramienta de escaneo redes)
+sudo netdiscover							- Realiza un escaneo de todos los dispositivos en la red local
+
 
