@@ -14,6 +14,8 @@ Nmap (Kali):
 
 "Si un escaneo tarda, para ver su porcentaje presionar flecha arriba."
 
+Flags de TCP: SYN (Sincronizar (inicio conexión)), ACK (Confirmación), FIN (Finalizar conexión), RST (Resetear conexión), PSH (Enviar datos inmediatamente), URG (Datos urgentes).
+
 
 Nmap targeting:
 
@@ -42,6 +44,9 @@ sudo nmap -sV target							- Service Version Scan, da las versiones de los servi
 sudo nmap -A target							- Aggressive Option, escaneo completo del target y usa todas las opciones anteriores (ruido muy alto)
 nmap -sn targets							- No ports, ver solo que hosts están arriba en una red (-255, /24) (ruido muy bajo)
 
+sudo nmap -sF target							- FIN Scan (ruido muy bajo)
+
+Disclaimer: Si los SYN scans están bloqueados por el firewall, el FIN Scan en vez de mandar una flag tipo SYN manda una tipo FIN (Finish). Si el puerto esta abierto no recibe respuesta pues es un fin de conexión pero si esta cerrado va a recibir respuesta RST (Resetear conexión). Mejor y mas viable es el SYN Scan pero no se debe descartar el FIN.
 
 Nmap port scanning:
 
@@ -50,6 +55,20 @@ nmap -p 80,100,5000 target						- Escanea solamente los puertos mencionados
 nmap -p 0-65535 target							- Escanea solamente dentro del rango de puertos mencionado, para ver todos sin limite ir al 65535
 nmap -F target								- Escanea el top 100 puertos más usados
 
+
+Packet Fragmentation (no funciona en la mayoría de casos):
+
+sudo nmap -f target							- Divide los paquetes en grupos de 3 (para intentar pasar el firewall)
+sudo nmap -f -f target							- Divide los paquetes en grupos de 2 (muchos no soportan tamaños tan pequeños de paquetes)
+sudo nmap --mtu n target						- Divide los paquetes en grupos de n (n tiene que ser múltiplo de 8 (byte))
+
+
+Decoys (esconde mi Ip):
+
+sudo nmap -D RND:5 PARAMS target					- Crea 5 IPs randoms para esconder la mía (todas escanean mi target) (ideal para escanear fuera de mi red)
+sudo nmap -D 192.168.1.4,192.168.1.54,192.168.1.32,ME target		- Especifico todas las IPs locales que quiera y al final me incluyo (ME) (ideal para dentro de mi red)
+sudo nmap -S x.x.x.x -Pn -e eth0					- Mandar un paquete desde la IP especificada, -Pn asume que el target esta online, -e es el network interface que se 									  puede ver con el ifconfig. Este comando no devuelve respuesta, solo el target puede verlo.
+sudo nmap -S x.x.x.x -Pn -e eth0 -g PORT_NUMBER				- Lo mismo que el anterior pero se puede enviar a un puerto especifico (para bypass al firewall si ellos admiten 									  paquetes en un puerto especifico y nosotros tenemos ese puerto)
 
 Guardar Resultados Nmap:
 
